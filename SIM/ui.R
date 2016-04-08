@@ -1,7 +1,7 @@
 library(PKSFC)
 
 shinyUI(fluidPage(
-  titlePanel("SIMEX"),
+  titlePanel("Model SIM"),
 
   sidebarLayout(
     sidebarPanel(
@@ -36,9 +36,8 @@ shinyUI(fluidPage(
                                       label = h3("Variables"),
                                       choices = list("Consumption" = "C_s","Disposable Income" = "Yd",
                                                      "Taxes" = "T_s", "Government Expenditure" = "G_s",
-                                                     "GDP" = "Y", "Expected disposable income" = "Yd_e",
-                                                     "Household wealth" = "H_s"),
-                                      selected = c("Yd_e","Yd"))),
+                                                     "GDP" = "Y", "Household wealth" = "H_s"),
+                                      selected = c("Yd"))),
           column(9, plotOutput("plot"))
         )
         ),
@@ -47,9 +46,8 @@ shinyUI(fluidPage(
                                       label = h3("Variables"),
                                       choices = list("Consumption" = "C_s","Disposable Income" = "Yd",
                                                      "Taxes" = "T_s", "Government Expenditure" = "G_s",
-                                                     "GDP" = "Y", "Expected disposable income" = "Yd_e",
-                                                     "Household wealth" = "H_s"),
-                                      selected = c("Yd_e","Yd")),
+                                                     "GDP" = "Y", "Household wealth" = "H_s"),
+                                      selected = c("Yd")),
                  numericInput("init",label = h3("Scenario init"),value = 1975)),
           column(9, plotOutput("plotscen")),
           column(6,sliderInput("alpha1_scen",

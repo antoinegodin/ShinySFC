@@ -11,16 +11,16 @@ N_s = N_d
 Yd = W*N_s - T_s
 #Taxes
 T_d = theta*W*N_s
-#Consumption
-C_d = alpha1*Yd_e + alpha2*H_h(-1)
+#Consumption - Original
+C_d_o = (alpha1*(1-theta)*G_d + alpha2*H_h(-1))/(1-alpha1*(1-theta))
+#Consumption - Solved
+C_d = (alpha1*(1-theta)*G_d + alpha2*H_h(-1))/(1-alpha1*(1-theta))
 #Government Debt
 H_s = H_s(-1) + G_d - T_d
 #Households wealth
 H_h = H_h(-1) + Yd - C_d
 #GDP
 Y = C_s + G_s
-#Expected disposable income
-Yd_e = Yd(-1)
 #Employment
 N_d = Y/W
 #2. PARAMETERS
@@ -38,6 +38,5 @@ W=1
 #INITIAL VALUES
 H_s=0
 H_h=0
-Yd=0
 #3. Timeline
 timeline 1945 2010

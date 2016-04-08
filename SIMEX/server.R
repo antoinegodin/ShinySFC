@@ -1,8 +1,6 @@
 #Place 1 Run once
 library(PKSFC)
-library(graph)
 library(Rgraphviz)
-library(grid)
 
 shinyServer(
   function(input,output){
