@@ -1,6 +1,6 @@
 #Place 1 Run once
-library(PKSFC)
-library(Rgraphviz)
+source("../data/SourceCode.R")
+#library(Rgraphviz)
 
 shinyServer(
   function(input,output){

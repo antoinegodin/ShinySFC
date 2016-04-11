@@ -1,11 +1,11 @@
 #Place 1 Run once
-library(PKSFC)
-library(Rgraphviz)
+source("../data/SourceCode.R")
+#library(Rgraphviz)
 
 shinyServer(
   function(input,output){
     #Place 2 Run once for every visitor of the app
-    simex<-sfc.model("data/SIMEX.txt",modelName="SIMplest model")
+    simex<-sfc.model("../data/SIMEX.txt",modelName="SIMplest model")
     datasimex<-simulate(simex)
 
     output$text1<-renderText({
