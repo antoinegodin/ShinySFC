@@ -1,0 +1,43 @@
+#1. EQUATIONS
+#Consumption
+C_s = C_d
+#Government Expenditure
+G_s = G_d
+#Taxes
+T_s = T_d
+#Employment
+N_s = N_d
+#Disposable income
+Yd = W*N_s - T_s
+#Taxes
+T_d = theta*W*N_s
+#Consumption
+C_d = alpha1*Yd_e + alpha2*H_h(-1)
+#Government Debt
+H_s = H_s(-1) + G_d - T_d
+#Households wealth
+H_h = H_h(-1) + Yd - C_d
+#GDP
+Y = C_s + G_s
+#Expected disposable income
+Yd_e = Yd(-1)
+#Employment
+N_d = Y/W
+#2. PARAMETERS
+#Propensity to consume out of income
+alpha1=0.6
+#Propensity to consume out of wealth
+alpha2=0.4
+#Tax rate
+theta=0.2
+#EXOGENOUS
+#Government expenditure
+G_d=20
+#Wage rate
+W=1
+#INITIAL VALUES
+H_s=0
+H_h=0
+Yd=0
+#3. Timeline
+timeline 1945 2010

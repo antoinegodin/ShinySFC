@@ -2,8 +2,8 @@ name: SIMEX
 account: antoinegodin
 server: shinyapps.io
 appId: 92680
-bundleId: 415818
+bundleId: 417188
 url: https://antoinegodin.shinyapps.io/SIMEX/
-when: 1460372228.6901
+when: 1460466866.65331
 asMultiple: FALSE
 asStatic: FALSE

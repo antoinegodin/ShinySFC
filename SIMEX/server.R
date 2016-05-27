@@ -1,24 +1,26 @@
 #Place 1 Run once
-source("../data/SourceCode.R")
-#library(Rgraphviz)
+source("data/SourceCode.R")
+library(Rgraphviz)
+library(igraph)
+library(expm)
+library(Matrix)
 
 shinyServer(
   function(input,output){
     #Place 2 Run once for every visitor of the app
-    simex<-sfc.model("../data/SIMEX.txt",modelName="SIMplest model")
+    simex<-sfc.model("data/SIMEX.txt",modelName="SIMplest model")
     datasimex<-simulate(simex)
-
-    output$text1<-renderText({
-      simex$name
-    })
-
+    
     output$equations <- renderTable({
       temp<-as.data.frame(simex$equations[,c(1,2)])
       colnames(temp)<-c("Variable","Equation")
       temp
+    	#matrix(c(getwd(),list.dirs(getwd())),ncol=1)
     })
 
-    output$dag <- renderPlot({plot_graph_hierarchy(graph=generate.DAG.collaspe( adjacency = t(simex$matrix) )$orginal_graph,main="SIMEX")})
+    output$dag <- renderPlot({
+    	plot_graph_hierarchy(graph=generate.DAG.collaspe( adjacency = t(simex$matrix) )$orginal_graph,main="SIMEX")
+    })
 
     output$plot <- renderPlot({
       run=FALSE
@@ -45,8 +47,6 @@ shinyServer(
       varnames<-input$checkGroup
       matplot(myData[c(varnames)],type="l",xlab="",ylab="",lwd=2,lty=1)
       legend("topleft",col=1:length(varnames),bty='n',lwd=2,lty=1,legend=varnames)
-      #
-      #
     })
 
     output$plotscen <- renderPlot({
@@ -98,8 +98,6 @@ shinyServer(
       varnames<-input$checkGroup_scen
       matplot(rownames(myData),myData[c(varnames)],type="l",xlab="",ylab="",lwd=2,lty=1)
       legend("topleft",col=1:length(varnames),bty='n',lwd=2,lty=1,legend=varnames)
-      #
-      #
     })
   }
 )

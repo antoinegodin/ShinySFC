@@ -1,0 +1,10 @@
+name: AB-SFC
+account: antoinegodin
+server: shinyapps.io
+appId: 104538
+bundleId: 463802
+url: https://antoinegodin.shinyapps.io/AB-SFC/
+when: 1464299904.44017
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: Test.R

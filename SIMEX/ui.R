@@ -1,4 +1,3 @@
-source("../data/SourceCode.R")
 
 shinyUI(fluidPage(
   titlePanel("Model SIMEX"),

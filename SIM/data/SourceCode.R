@@ -780,3 +780,48 @@ generate.DAG.collaspe = function(adjacency){
 		return(results)
 	}else{print("woops! Somethings after going wrong, function did not results in a DAG!")}
 }
+
+find.loop.nodes = function(adjacency, IGRAPH = FALSE){
+	# function will return a vector of col/row number assocaited with nodes
+	# that are part of a loop
+	if( IGRAPH == TRUE ){
+		adjacency = get.adjacency(adjacency,sparse = FALSE)
+	}
+	ans = numeric() # ans will contain the nodes of interest
+	l = dim(adjacency)[1] # find the number of rows/col of matrix
+	
+	# find the nodes with cycles
+	for(i in 1:l){
+		path_lengths = diag(adjacency %^% i)
+		ans =c(ans,which(path_lengths > 0)) # return the positions of paths lenghts that are 
+		# greater than zero ( offending nodes )
+		
+	}
+	return(sort(unique(ans)))
+}
+
+is.DAG = function(adjacency, IGRAPH = FALSE){
+	# function will tell you if it is a DAG or not!
+	
+	# if an igraph graph object is used then turn it back into a matrix
+	if( IGRAPH == TRUE ){
+		adjacency = get.adjacency(adjacency,sparse = FALSE)
+	}
+	l = dim(adjacency)[1]
+	path_lengths = numeric(l)
+	
+	for(i in 1:l){
+		path_lengths[i] = tr(adjacency %^% i)
+		# print(i)
+	}
+	
+	if(sum(path_lengths) == 0){
+		return(TRUE)
+	}else{
+		return(FALSE)}
+}
+
+tr = function(mat){ 
+	# just a quick and dirty trace function
+	sum( diag(mat) )
+}

@@ -1,4 +1,4 @@
-source("../data/SourceCode.R")
+#source("../data/SourceCode.R")
 
 shinyUI(fluidPage(
   titlePanel("Model SIM"),
