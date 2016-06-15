@@ -1,16 +1,16 @@
 source("data/SourceCode.R")
 
 simex<-{}
-simex$phi_init = 1
-simex$alpha11_init = 0.4
+simex$phi_init = 100
+simex$alpha11_init = 0.8
 simex$alpha12_init = 0.25
 simex$alpha2_init = 0.4
 simex$theta_init = 0.2
 simex$sigmap_init = 0.00
 simex$sigmaw_init = 0.00
 simex$G_init = 20
-simex$phi_baseline = 1
-simex$alpha11_baseline = 0.4
+simex$phi_baseline = 100
+simex$alpha11_baseline = 0.8
 simex$alpha12_baseline = 0.25
 simex$alpha2_baseline = 0.4
 simex$theta_baseline = 0.2
@@ -18,7 +18,7 @@ simex$sigmap_baseline = 0.00
 simex$sigmaw_baseline = 0.00
 simex$G_baseline = 20
 simex$phi_shock = 1
-simex$alpha11_shock = 0.4
+simex$alpha11_shock = 0.8
 simex$alpha12_shock = 0.25
 simex$alpha2_shock = 0.4
 simex$theta_shock = 0.2
@@ -38,7 +38,10 @@ datasimex<-simulateAB(alpha11_baseline = simex$alpha11_baseline,alpha12_baseline
 											shock = simex$shock,incomeDistr=simex$incomeDistr)
 #PLace 3, runs every time somtheing changes in the widgets
 myData<-as.data.frame(datasimex$baseline)
-varnames<-c("CY")
+varnames<-c("H")
 matplot(myData[c(varnames)],type="l",xlab="",ylab="",lwd=2,lty=1)
 legend("topleft",col=1:length(varnames),bty='n',lwd=2,lty=1,legend=varnames)
-lines(datasimex$scenario_1["CY"],col=3,lwd=2)
+lines(datasimex$scenario_1["H"],col=3,lwd=2)
+
+test<-datasimex$baseline
+test_scen<-datasimex$scenario_1
